@@ -32,14 +32,14 @@ int tblSrch(hashTbl_t *tbl, char *word) {
     assert(word);
 
     int lenWord = strlen(word);
-    int wordHash = hash0(word, lenWord, SEED) % tblSize;
+    int wordHash = MurmurHash1(word, lenWord, SEED) % tblSize;
     int lstSize = tbl->aTbl[wordHash]->capacity - tbl->aTbl[wordHash]->num_of_free_elem;
 
     for (int idx = 1; idx < lstSize + 1; idx++) {
         int lenElem = strlen(tbl->aStr[int(tbl->aTbl[wordHash]->arr[idx].data)]);
         int len = 0;
 
-        (lenElem > lenWord) ? len = lenWord : len = lenElem;
+        (lenElem > lenWord) ? len = lenElem : len = lenWord;
 
         if (!strncmp(tbl->aStr[int(tbl->aTbl[wordHash]->arr[idx].data)], word, len))
             return wordHash;
@@ -53,8 +53,9 @@ void tblIns(hashTbl_t *tbl, char *word) {
     assert(word);
 
     int wordHash = tblSrch(tbl, word);
-    if (wordHash >= 0)
-        return; 
+    if (wordHash >= 0) 
+        return;
+ 
 
     wordHash = -wordHash -1;
 

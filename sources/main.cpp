@@ -11,6 +11,11 @@ int main() {
     pos = tblSrch(tbl, "god");
     printf("%d\n", pos);
 
+    for (int idx = 0; idx < tblSize; idx++) {
+        int size = tbl->aTbl[idx]->capacity - tbl->aTbl[idx]->num_of_free_elem;
+        printf("#%d - %d :: cap = %ld, free = %ld\n", idx, size, tbl->aTbl[idx]->capacity, tbl->aTbl[idx]->num_of_free_elem);
+    }
+
     tblDtor(tbl);
     aWordDtor(&aWord);
 
