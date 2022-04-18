@@ -51,3 +51,7 @@ uint32_t MurmurHash1 ( const void * key, int len, uint32_t seed )
 
   return h;
 } 
+
+int hash0( const void * key, int len, uint32_t seed ) {
+  return 0;
+}

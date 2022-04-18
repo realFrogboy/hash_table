@@ -6,7 +6,7 @@
 
 const int resizeCoeff = 2;
 const int startSize = 50;
-const int tblSize = 100;
+const int tblSize = 50;
 const int SEED = 1;
 
 struct hashTbl_t {
